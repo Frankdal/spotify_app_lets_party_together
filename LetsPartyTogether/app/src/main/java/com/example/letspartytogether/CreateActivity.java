@@ -2,6 +2,7 @@ package com.example.letspartytogether;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,12 @@ public class CreateActivity extends AppCompatActivity {
         bttCreate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String _nomeParty = etPartyName.getText().toString();
+
+                Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
+                intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);
+                startActivity(intentToPartyActivity);
 
             }
         });
