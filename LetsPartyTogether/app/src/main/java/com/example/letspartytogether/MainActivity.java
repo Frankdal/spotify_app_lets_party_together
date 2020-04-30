@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         bttCreate1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(getApplicationContext(), "BELLAA", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "BELLAA", Toast.LENGTH_LONG).show();
                 Intent intentToCreateActivity = new Intent("android.intent.action.CreateActivity");
                 startActivity(intentToCreateActivity);
 

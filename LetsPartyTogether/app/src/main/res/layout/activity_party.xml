@@ -4,56 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateActivity">
+    tools:context=".PartyActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvPartyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/stint_ultra_expanded"
-        android:text="CREATE THE PARTY!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/Green"
+        android:text="TITOLO"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079" />
 
-    <EditText
-        android:id="@+id/etPartyName"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvPartyCode"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nome del party:"
+        android:text="CODICE PARTY: 123456"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
-
-    <EditText
-        android:id="@+id/etPartyHost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome host:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.155" />
 
     <Button
-        android:id="@+id/bttCreate2"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:text="CREATE"
-        android:textSize="20dp"
-        android:textColor="@color/Green"
+        android:id="@+id/bttCopyPartyCode"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="COPY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
