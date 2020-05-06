@@ -15,7 +15,7 @@ public class PartyActivity extends AppCompatActivity {
 
     private TextView tvFinalPartyCode;
     private TextView tvPartyName, tvPartyCode;
-    private Button bttCopyPartyCode;
+    private Button bttCopyPartyCode, bttAddSong;
 
 
     @Override
@@ -27,6 +27,7 @@ public class PartyActivity extends AppCompatActivity {
         tvPartyName = findViewById(R.id.tvPartyName);
         tvPartyCode = findViewById(R.id.tvPartyCode);
         bttCopyPartyCode = findViewById(R.id.bttCopyPartyCode);
+        bttAddSong = findViewById(R.id.bttAddSong);
 
         Intent partyIntent = getIntent();
         String title = partyIntent.getStringExtra(getString(R.string.STRINGA_CreateToParty));
@@ -40,6 +41,15 @@ public class PartyActivity extends AppCompatActivity {
                 ClipData clip = ClipData.newPlainText("Code: ", tvPartyCode.getText().toString());
                 clipboard.setPrimaryClip(clip);
 
+            }
+        });
+
+
+        bttAddSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAddSongToResearch = new Intent("android.intent.action.ResearchActivity");
+                startActivity(intentAddSongToResearch);
             }
         });
 
