@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.letspartytogether.R;
+
 public class ResearchActivity extends AppCompatActivity {
 
     private EditText etSongName;

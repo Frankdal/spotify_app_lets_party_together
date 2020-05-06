@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.letspartytogether.R;
+
 public class JoinActivity extends AppCompatActivity {
 
     private EditText etPartyCodeJoin, etJoinName;
