@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // Toast.makeText(getApplicationContext(), "BELLAA", Toast.LENGTH_LONG).show();
-                Intent intentToCreateActivity = new Intent("android.intent.action.CreateActivity");
-                startActivity(intentToCreateActivity);
+                Intent intentToSplashActivity = new Intent("android.intent.action.SplashActivity");
+                startActivity(intentToSplashActivity);
 
             }
         });

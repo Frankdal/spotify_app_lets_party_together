@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "5a7933f0c4da42ae8a33a0041257cbfd";
     private static final String REDIRECT_URI = "com.example.letspartytogether://callback";
     private static final int REQUEST_CODE = 1337;
-    private static final String SCOPES = "user-read-recently-played,user-library-modify,user-library-read,playlist-modify-public,playlist-modify-private,user-read-email,user-read-private,user-read-birthdate,playlist-read-private,playlist-read-collaborative";
+    private static final String SCOPES = "user-read-recently-played,user-library-modify,user-library-read,playlist-modify-public,playlist-modify-private,user-read-email,user-read-private,playlist-read-private,playlist-read-collaborative";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startMainActivity() {
-        Intent newintent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent newintent = new Intent("android.intent.action.CreateActivity");
         startActivity(newintent);
     }
 
