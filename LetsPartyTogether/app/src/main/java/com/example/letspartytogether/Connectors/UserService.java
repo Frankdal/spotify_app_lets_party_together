@@ -4,10 +4,13 @@ import android.content.SharedPreferences;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.example.letspartytogether.Model.User;
 import com.example.letspartytogether.VolleyCallBack;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +32,13 @@ public class UserService {
     }
 
     public void get(final VolleyCallBack callBack) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(ENDPOINT, null, response -> {
-            Gson gson = new Gson();
-            user = gson.fromJson(response.toString(), User.class);
-            callBack.onSuccess();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(ENDPOINT, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Gson gson = new Gson();
+                user = gson.fromJson(response.toString(), User.class);
+                callBack.onSuccess();
+            }
         }, error -> get(() -> {
 
         })) {

@@ -3,6 +3,7 @@ package com.example.letspartytogether;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.letspartytogether.R;
 
 import java.io.File;
@@ -26,6 +29,8 @@ public class CreateActivity extends AppCompatActivity {
     private EditText etPartyName, etPartyHost;
     private Button bttCreate2;
     private static final String fileName = "PartyList.txt";
+    private  JsonRequestPost jsonRequestPost;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +41,13 @@ public class CreateActivity extends AppCompatActivity {
         etPartyHost = findViewById(R.id.etPartyHost);
         bttCreate2 = findViewById(R.id.bttCreate2);
 
+
         bttCreate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String _nomeParty = etPartyName.getText().toString();
+                jsonRequestPost = new JsonRequestPost(getApplicationContext(),_nomeParty);
 
                 Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
                 intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);
