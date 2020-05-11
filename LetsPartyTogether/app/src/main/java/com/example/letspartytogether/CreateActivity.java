@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.letspartytogether.Model.PartyCode;
 import com.example.letspartytogether.R;
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class CreateActivity extends AppCompatActivity {
     private Button bttCreate2;
     private static final String fileName = "PartyList.txt";
     private  JsonRequestPost jsonRequestPost;
+    public  String SecretCode;
 
 
     @Override
@@ -48,6 +50,7 @@ public class CreateActivity extends AppCompatActivity {
 
                 String _nomeParty = etPartyName.getText().toString();
                 jsonRequestPost = new JsonRequestPost(getApplicationContext(),_nomeParty);
+                SecretCode = jsonRequestPost.getCode();
 
                 Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
                 intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);

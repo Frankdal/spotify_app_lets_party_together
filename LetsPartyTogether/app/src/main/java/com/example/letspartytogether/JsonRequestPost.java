@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.letspartytogether.Model.CodeParty;
 import com.example.letspartytogether.Model.PartyCode;
 import com.google.gson.Gson;
 
@@ -23,6 +24,7 @@ public class JsonRequestPost {
     private SharedPreferences sharedPreferences;
     private RequestQueue requestQueue;
     private String data;
+    private CodeParty codeParty;
 
 
     public JsonRequestPost(Context context,String partyName) {
@@ -35,6 +37,10 @@ public class JsonRequestPost {
         Submit(data);
     }
 
+    public String getCode() {
+       return  codeParty.getPartyIdId();
+    }
+
     public void Submit(String data)
     {
         final String savedata= data;
@@ -45,6 +51,8 @@ public class JsonRequestPost {
             public void onResponse(String response) {
                 try {
                     JSONObject objres=new JSONObject(response);
+                    Gson gson = new Gson();
+                    codeParty = gson.fromJson(objres.toString(),CodeParty.class);
 
 
                 } catch (JSONException e) {
