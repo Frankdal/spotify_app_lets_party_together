@@ -33,7 +33,9 @@ public class PartyActivity extends AppCompatActivity {
 
         Intent partyIntent = getIntent();
         String title = partyIntent.getStringExtra(getString(R.string.STRINGA_CreateToParty));
+        String code = partyIntent.getStringExtra(getString((R.string.STRINGA_CreateCodice)));
         tvPartyName.setText(title);
+        tvPartyCode.setText(code);
 
         bttCopyPartyCode.setOnClickListener(new View.OnClickListener() {
             @Override

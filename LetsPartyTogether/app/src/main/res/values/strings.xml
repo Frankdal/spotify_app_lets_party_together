@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Lets Party Together</string>
     <string name="STRINGA_CreateToParty">STRINGA_CreateToParty</string>
+    <string name="STRINGA_CreateCodice">STRINGA_CreateCodice</string>
 </resources>

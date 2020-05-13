@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.example.letspartytogether.Model.User;
@@ -33,9 +35,14 @@ public class UserService {
             Gson gson = new Gson();
             user = gson.fromJson(response.toString(), User.class);
             callBack.onSuccess();
-        }, error -> get(() -> {
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                UserService.this.get(() -> {
 
-        })) {
+                });
+            }
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
