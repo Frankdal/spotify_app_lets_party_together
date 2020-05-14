@@ -80,11 +80,21 @@ public class CreateActivity extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         if (response.isSuccessful()) {
                             final String myResponse = response.body().string();
-                            secretCode=myResponse;
+                            JSONObject jsonResponse = null;
+                            try {
+                                jsonResponse = new JSONObject(myResponse);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                secretCode=jsonResponse.getString("partyId");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             CreateActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast toast = Toast.makeText(getApplicationContext(),myResponse,Toast.LENGTH_LONG);
+                                    Toast toast = Toast.makeText(getApplicationContext(),"Party has been created! Your code is :"+secretCode,Toast.LENGTH_LONG);
                                     toast.show();
                                     Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
                                     intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);

@@ -11,13 +11,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.letspartytogether.Model.Song;
 import com.example.letspartytogether.R;
+
+import java.util.ArrayList;
 
 public class PartyActivity extends AppCompatActivity {
 
     private TextView tvFinalPartyCode;
     private TextView tvPartyName, tvPartyCode;
     private Button bttCopyPartyCode, bttAddSong;
+
 
 
     @Override
@@ -53,6 +57,7 @@ public class PartyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentAddSongToResearch = new Intent("android.intent.action.ResearchActivity");
+                intentAddSongToResearch.putExtra(getString(R.string.STRINGA_CreateCodice),code);
                 startActivity(intentAddSongToResearch);
             }
         });
