@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/stint_ultra_expanded"
-        android:text="TITOLO"
+        android:text="PARTY'S NAME"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,14 +24,14 @@
         android:id="@+id/tvFinalPartyCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CODICE:"
+        android:text="PARTY'S CODE:"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.131" />
 
     <TextView
         android:id="@+id/tvPartyCode"
@@ -41,22 +41,22 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131" />
 
     <Button
         android:id="@+id/bttCopyPartyCode"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:text="COPY"
+        android:layout_width="115dp"
+        android:layout_height="75dp"
+        android:text="COPY PARTY'S CODE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.975" />
 
     <Button
         android:id="@+id/bttAddSong"

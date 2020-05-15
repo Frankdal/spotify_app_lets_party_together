@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.letspartytogether.Model.Artist;
 import com.example.letspartytogether.Model.Song;
 import com.example.letspartytogether.R;
 import com.google.gson.Gson;
@@ -39,6 +40,7 @@ public class ResearchActivity extends AppCompatActivity {
     private String data;
     public ArrayList<Song> songs;
     public String base_url;
+    public ArrayList<Artist> artistsName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class ResearchActivity extends AppCompatActivity {
         bttSearchSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast toast = Toast.makeText(getApplicationContext(), "We are searching your song ...", Toast.LENGTH_LONG);
                 String _nameSong = etSongName.getText().toString();
                 songs = new ArrayList<>();
 
@@ -79,20 +82,17 @@ public class ResearchActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         if (response.isSuccessful()) {
-                            Toast toast = Toast.makeText(getApplicationContext(),"OH YESSSSSSSSSSS ",Toast.LENGTH_LONG);
-                            toast.show();
                             Gson gson = new Gson();
-                            JSONObject jsonResponse = null;
+                            final String myResponse = response.body().string();
+                            JSONArray jsonArray = null;
                             try {
-                                jsonResponse = new JSONObject(response.body().string());
+                                jsonArray = new JSONArray(myResponse);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            JSONArray jsonArray = jsonResponse.optJSONArray("items");
                             for (int n = 0; n < jsonArray.length(); n++) {
                                 try {
                                     JSONObject object = jsonArray.getJSONObject(n);
-                                    object = object.optJSONObject("track");
                                     Song song = gson.fromJson(object.toString(), Song.class);
                                     songs.add(song);
                                 } catch (JSONException e) {
@@ -101,12 +101,11 @@ public class ResearchActivity extends AppCompatActivity {
                                 ResearchActivity.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-//                                        Toast toast = Toast.makeText(getApplicationContext(), myResponse, Toast.LENGTH_LONG);
-//                                        toast.show();
-//                                        Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
-//                                        intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);
-//                                        intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateCodice), secretCode);
-//                                        startActivity(intentToPartyActivity);
+
+                                        Intent intentToAddSongActivity = new Intent("android.intent.action.AddSongActivity");
+                                        intentToAddSongActivity.putExtra("songs", songs);
+                                        intentToAddSongActivity.putExtra(getString(R.string.STRINGA_CreateCodice), code);
+                                        startActivity(intentToAddSongActivity);
                                     }
                                 });
                             }

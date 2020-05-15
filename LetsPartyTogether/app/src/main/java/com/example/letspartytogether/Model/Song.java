@@ -25,7 +25,6 @@ public class Song implements Serializable {
     }
 
     public void setUri(String name) {
-        this.name = name;
+        this.uri = uri;
     }
-
 }

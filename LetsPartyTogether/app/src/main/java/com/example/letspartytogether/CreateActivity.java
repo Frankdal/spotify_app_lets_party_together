@@ -50,7 +50,7 @@ public class CreateActivity extends AppCompatActivity {
                 String _nomeParty = etPartyName.getText().toString();
                 String _nomeHost = etPartyHost.getText().toString();
                 try {
-                    jsonObject.put("name",_nomeHost);
+                    jsonObject.put("name",_nomeParty);
                     jsonObject.put("userId", userId);
                     jsonObject.put("token",sharedPreferences.getString("token", ""));
                 } catch (JSONException e) {
