@@ -39,7 +39,7 @@ public class ResearchActivity extends AppCompatActivity {
     private String code;
     private String data;
     public String base_url;
-//    public ArrayList<Artist> artistsName;
+    public ArrayList<Artist> artistsName;
     public String jsonSongs;
     public ArrayList<Song> songs;
 
@@ -55,9 +55,10 @@ public class ResearchActivity extends AppCompatActivity {
         bttSearchSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "We are searching your song ...", Toast.LENGTH_LONG);
+//                Toast toast = Toast.makeText(getApplicationContext(), "We are searching your song ...", Toast.LENGTH_LONG);
                 String _nameSong = etSongName.getText().toString();
                 songs = new ArrayList<Song>();
+                artistsName = new ArrayList<Artist>();
 
 
                 HttpUrl.Builder urlBuilder
@@ -95,8 +96,12 @@ public class ResearchActivity extends AppCompatActivity {
                             for (int n = 0; n < jsonArray.length(); n++) {
                                 try {
                                     JSONObject object = jsonArray.getJSONObject(n);
+                                    JSONArray jsonArtist = object.optJSONArray("artists");
+                                    JSONObject objectArtist = jsonArtist.getJSONObject(0);
                                     Song song = gson.fromJson(object.toString(), Song.class);
+                                    Artist artist = gson.fromJson(objectArtist.toString(), Artist.class);
                                     songs.add(song);
+                                    artistsName.add(artist);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -105,6 +110,7 @@ public class ResearchActivity extends AppCompatActivity {
                                 ResearchActivity.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+
 
                                         Intent intentToAddSongActivity = new Intent("android.intent.action.AddSongActivity");
                                         intentToAddSongActivity.putExtra("jsonSongs",jsonSongs );
