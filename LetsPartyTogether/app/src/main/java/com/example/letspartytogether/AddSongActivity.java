@@ -31,6 +31,7 @@ import okhttp3.Response;
 
 public class AddSongActivity extends AppCompatActivity {
     public ArrayList<Song> songs;
+    public ArrayList<String> songsString;
     private String code;
     public ListView songList;
     private String data;
@@ -44,6 +45,8 @@ public class AddSongActivity extends AppCompatActivity {
         jsonSongs = getIntent().getStringExtra("jsonSongs");
         code = getIntent().getStringExtra(getString((R.string.STRINGA_CreateCodice)));
         songList = (ListView)findViewById(R.id.songList);
+        songs = new ArrayList<Song>();
+        songsString = new ArrayList<String>();
         Gson gson = new Gson();
         JSONArray jsonArray = null;
         try {
@@ -61,11 +64,16 @@ public class AddSongActivity extends AppCompatActivity {
             }
         }
 
+        for (int n = 0; n < jsonArray.length(); n++) {
+            String dataString = songs.get(n).getName();
+            songsString.add(dataString);
+        }
 
 
 
 
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,songs);
+
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,songsString);
 
 
         songList.setAdapter(arrayAdapter);
@@ -75,6 +83,7 @@ public class AddSongActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(AddSongActivity.this,"Adding"+songs.get(i).getName()+"to our party's playlist!!", Toast.LENGTH_SHORT).show();
+                jsonObject = new JSONObject();
 
                 try {
                     jsonObject.put("partyId",code);
@@ -91,8 +100,8 @@ public class AddSongActivity extends AppCompatActivity {
                 MediaType mediaType = MediaType.parse("application/json");
                 RequestBody body = RequestBody.create(mediaType,data);
                 Request request = new okhttp3.Request.Builder()
-                        .url("http://lordip.ddns.net:8124/party ")
-                        .method("PUT", body)
+                        .url("http://lordip.ddns.net:8124/playlist")
+                        .method("POST", body)
                         .addHeader("Content-Type", "application/json")
                         .build();
                 client.newCall(request).enqueue(new Callback() {

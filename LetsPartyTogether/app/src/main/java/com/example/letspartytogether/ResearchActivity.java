@@ -57,6 +57,7 @@ public class ResearchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), "We are searching your song ...", Toast.LENGTH_LONG);
                 String _nameSong = etSongName.getText().toString();
+                songs = new ArrayList<Song>();
 
 
                 HttpUrl.Builder urlBuilder
