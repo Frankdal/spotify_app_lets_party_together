@@ -64,7 +64,6 @@ public class CreateActivity extends AppCompatActivity {
                 OkHttpClient client = new OkHttpClient().newBuilder()
                         .build();
                 MediaType mediaType = MediaType.parse("application/json");
-                //RequestBody body = RequestBody.create(mediaType, "{\"name\":\"ddddd\",\"userId\":\"ddddd\",\"token\":\"BQD12Z6tBUHdNVT57paPu6kzp7FDDKeaE3rvENY1b5hIISYsxjHrHr-OUnqAlOra1_JTiwLlnHiBJE4nFgqp6fnLE95UXYaqTbR07tkx_chKK4-RfcXAG2_1DKXpUuBrFul3Tk4U_xRJ25oIhAE4LqcvkwIQa3fUkYc5bcwp4nG-TX9AjdZIEK9RV39tgdNOaHpIWhtLZB0xcr_xlw1G1GHnQ6VxxZyCB8MQNoaRjxabYQg3joAUJygdxSUmEXukyW07IQ\"}");
                 RequestBody body = RequestBody.create(mediaType,data);
                 Request request = new okhttp3.Request.Builder()
                         .url("http://lordip.ddns.net:8124/party ")
@@ -87,7 +86,7 @@ public class CreateActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             try {
-                                secretCode=jsonResponse.getString("partyId");
+                                secretCode = jsonResponse.getString("partyId");
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
