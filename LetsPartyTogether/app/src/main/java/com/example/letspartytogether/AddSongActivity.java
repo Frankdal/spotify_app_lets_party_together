@@ -122,7 +122,7 @@ public class AddSongActivity extends AppCompatActivity {
                             AddSongActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast toast = Toast.makeText(getApplicationContext(),"has been added to the Party's Playlist !!!",Toast.LENGTH_LONG);
+                                    Toast toast = Toast.makeText(getApplicationContext(),"The track has been added to the Party's Playlist !!!",Toast.LENGTH_LONG);
                                     toast.show();
 
                                 }
