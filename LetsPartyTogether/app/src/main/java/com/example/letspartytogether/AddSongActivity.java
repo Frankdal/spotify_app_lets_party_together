@@ -73,7 +73,7 @@ public class AddSongActivity extends AppCompatActivity {
 
         for (int n = 0; n < songs.size(); n++) {
             String dataString = songs.get(n).getName();
-            songsString.add(dataString + "-"+ artistsName.get(n).getName());
+            songsString.add(dataString + " - "+ artistsName.get(n).getName());
         }
 
 

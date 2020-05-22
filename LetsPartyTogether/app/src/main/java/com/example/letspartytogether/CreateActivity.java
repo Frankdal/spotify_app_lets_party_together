@@ -93,7 +93,7 @@ public class CreateActivity extends AppCompatActivity {
                             CreateActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast toast = Toast.makeText(getApplicationContext(),"Party has been created! Your code is :"+secretCode,Toast.LENGTH_LONG);
+                                    Toast toast = Toast.makeText(getApplicationContext(),"Party has been created! Your code is: "+secretCode,Toast.LENGTH_LONG);
                                     toast.show();
                                     Intent intentToPartyActivity = new Intent("android.intent.action.PartyActivity");
                                     intentToPartyActivity.putExtra(getString(R.string.STRINGA_CreateToParty), _nomeParty);
