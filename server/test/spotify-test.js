@@ -3,6 +3,7 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const should = chai.should();
 const assert = chai.assert;
+const removeDuplicates = require("../plugins/listManager").removeDuplicates;
 
 chai.use(chaiHttp);
 
@@ -146,4 +147,15 @@ describe("/PUT playlist", () => {
 		if (res.status != 201) console.log(res.text);
 		res.should.have.status(201);
 	}).timeout(10000);
+});
+
+describe("remove_duplicates", () => {
+	it("should remove the duplicates from the array", () => {
+		array = ["John", "Beppe", "Jack", "Beppe"];
+		expected = ["John", "Beppe", "Jack"];
+
+		actual = removeDuplicates(array);
+		// console.log(actual);
+		assert.equal(actual.length, expected.length);
+	});
 });

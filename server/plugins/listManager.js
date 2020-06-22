@@ -14,6 +14,9 @@ function rearrangePlaylist(playlistId, token, data) {
 		data.forEach((track) => {
 			trackIds.push(track.track.id);
 		});
+
+		trackIds = removeDuplicates(trackIds);
+
 		let features = await spotify.getFeaturesOfTracks(trackIds, token);
 		if (features.status)
 			resolve({
@@ -92,6 +95,12 @@ function rearrangePlaylist(playlistId, token, data) {
 	});
 }
 
+function removeDuplicates(array) {
+	let newArray = array.filter((v, i) => array.indexOf(v) == i);
+	return newArray;
+}
+
 module.exports = {
 	rearrangePlaylist,
+	removeDuplicates,
 };
