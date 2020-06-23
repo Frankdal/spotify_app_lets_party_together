@@ -35,29 +35,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.206" />
 
-    <EditText
-        android:id="@+id/etJoinName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Guest's name:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
-
     <Button
         android:id="@+id/bttJoin2"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="JOIN"
-        android:textSize="20dp"
         android:textColor="@color/Green"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.40" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,7 +33,7 @@ import okhttp3.Response;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private EditText etPartyCodeJoin, etJoinName;
+    private EditText etPartyCodeJoin;
     private Button bttJoin2;
     public String base_url;
     public JSONObject jsonParty;
@@ -46,14 +46,12 @@ public class JoinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_join);
         base_url = "http://lordip.ddns.net:8124";
         etPartyCodeJoin = findViewById(R.id.etPartyCodeJoin);
-        etJoinName = findViewById(R.id.etJoinName);
         bttJoin2 = findViewById(R.id.bttJoin2);
 
         bttJoin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 _codeParty = etPartyCodeJoin.getText().toString();
-                String _nameParty = etJoinName.getText().toString();
                 jsonParty = new JSONObject();
 
 

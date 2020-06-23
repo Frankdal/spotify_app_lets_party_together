@@ -25,7 +25,7 @@ import okhttp3.Response;
 
 public class CreateActivity extends AppCompatActivity {
 
-    private EditText etPartyName, etPartyHost;
+    private EditText etPartyName;
     private Button bttCreate2;
     private static final String fileName = "PartyList.txt";
     private String secretCode;
@@ -38,7 +38,6 @@ public class CreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create);
 
         etPartyName = findViewById(R.id.etPartyName);
-        etPartyHost = findViewById(R.id.etPartyHost);
         bttCreate2 = findViewById(R.id.bttCreate2);
         jsonObject = new JSONObject();
         SharedPreferences sharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
@@ -48,7 +47,6 @@ public class CreateActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String _nomeParty = etPartyName.getText().toString();
-                String _nomeHost = etPartyHost.getText().toString();
                 try {
                     jsonObject.put("name",_nomeParty);
                     jsonObject.put("userId", userId);
