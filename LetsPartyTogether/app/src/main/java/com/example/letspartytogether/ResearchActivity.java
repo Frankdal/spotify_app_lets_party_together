@@ -118,6 +118,8 @@ public class ResearchActivity extends AppCompatActivity {
                             songs = new ArrayList<Song>();
                             artistsName = new ArrayList<Artist>();
                             songsString = new ArrayList<String>();
+                            gson = new Gson();
+                            jsonArray = null;
                             try {
                                 jsonArray = new JSONArray(jsonSongs);
                             } catch (JSONException e) {
