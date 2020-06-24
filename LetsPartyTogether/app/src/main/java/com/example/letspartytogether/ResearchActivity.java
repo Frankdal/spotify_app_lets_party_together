@@ -56,7 +56,7 @@ public class ResearchActivity extends AppCompatActivity {
         base_url = "http://lordip.ddns.net:8124";
         etSongName = findViewById(R.id.etSongName);
         bttSearchSong = findViewById(R.id.bttSearchSong);
-        songList = findViewById(R.id.lwRes);
+        songList = (ListView)findViewById(R.id.lwRes);
         Intent researchIntent = getIntent();
         code = researchIntent.getStringExtra(getString((R.string.STRINGA_CreateCodice)));
         bttSearchSong.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class ResearchActivity extends AppCompatActivity {
                                 }
                             }
 
-                            songList = (ListView)findViewById(R.id.songList);
+
                             songs = new ArrayList<Song>();
                             artistsName = new ArrayList<Artist>();
                             songsString = new ArrayList<String>();
