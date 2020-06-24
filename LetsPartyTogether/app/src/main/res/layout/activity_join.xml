@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/stint_ultra_expanded"
         android:text="JOIN THE PARTY!"
+        android:textSize="28dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/Green"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,12 +26,12 @@
         android:id="@+id/etPartyCodeJoin"
         android:inputType="number"
         android:maxLength="6"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Party's code:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.206" />
@@ -47,6 +48,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.40" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/Notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
