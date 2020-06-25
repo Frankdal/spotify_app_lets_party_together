@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (bttCreate1.isShown() && bttJoin1.isShown()) {
-                    bttCreate1.setVisibility(View.INVISIBLE);
+                if (bttCreate1.isShown() && bttJoin1.isShown()) { //Se clicco + mi appaiono i bottoni
+                    bttCreate1.setVisibility(View.INVISIBLE);     //Se sono già visibili, scompaiono
                     bttJoin1.setVisibility(View.INVISIBLE);
                 }
 
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         bttCreate1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(getApplicationContext(), "BELLAA", Toast.LENGTH_LONG).show();
                 Intent intentToSplashActivity = new Intent("android.intent.action.SplashActivity");
                 startActivity(intentToSplashActivity);
 

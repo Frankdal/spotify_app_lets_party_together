@@ -44,7 +44,7 @@ public class PartyActivity extends AppCompatActivity {
         bttCopyPartyCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Bottone che ci permette di copiare il codice del party nella clipboard del telefono
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("Code: ", tvPartyCode.getText().toString());
                 clipboard.setPrimaryClip(clip);
@@ -56,6 +56,7 @@ public class PartyActivity extends AppCompatActivity {
         bttAddSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Si va nell'activity di ricerca della canzone, portandoci dietro il codice del nostro party
                 Intent intentAddSongToResearch = new Intent("android.intent.action.ResearchActivity");
                 intentAddSongToResearch.putExtra(getString(R.string.STRINGA_CreateCodice),code);
                 startActivity(intentAddSongToResearch);

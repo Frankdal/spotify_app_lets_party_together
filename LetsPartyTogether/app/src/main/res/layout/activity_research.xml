@@ -22,11 +22,10 @@
         android:layout_marginTop="38dp"
         app:srcCompat="@drawable/ic_search_black_24dp" />
 
-        <ListView
-            android:id="@+id/lwRes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="90dp"
-            android:visibility="visible"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/image"
+        android:layout_marginTop="300dp"/>
 
 </RelativeLayout>

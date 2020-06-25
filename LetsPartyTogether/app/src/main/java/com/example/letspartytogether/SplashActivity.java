@@ -28,9 +28,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private RequestQueue queue;
 
+    //Inizializzazione dei parametri di connessione all'API di Spotify
     private static final String CLIENT_ID = "5a7933f0c4da42ae8a33a0041257cbfd";
     private static final String REDIRECT_URI = "com.example.letspartytogether://callback";
     private static final int REQUEST_CODE = 1337;
+    //Specificando le autorizzazioni che chiediamo a Spotify
     private static final String SCOPES = "user-read-recently-played,user-library-modify,user-library-read,playlist-modify-public,playlist-modify-private,user-read-email,user-read-private,playlist-read-private,playlist-read-collaborative";
 
     @Override
@@ -38,10 +40,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.i(this.getLocalClassName(), "Created Activity");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getSupportActionBar().hide();
-//        setContentView(R.layout.activity_splash);
-
-
+        //Inizio l'autenticazione di Spotify
         authenticateSpotify();
 
         msharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
@@ -58,21 +57,21 @@ public class SplashActivity extends AppCompatActivity {
             Log.d("STARTING", "GOT USER INFORMATION");
             // We use commit instead of apply because we need the information stored immediately
             editor.commit();
-            startMainActivity();
+            startCreateActivity();
         });
     }
 
-    private void startMainActivity() {
+    private void startCreateActivity() {
         Intent newintent = new Intent("android.intent.action.CreateActivity");
         startActivity(newintent);
     }
 
 
-    private void authenticateSpotify() {
+    private void authenticateSpotify() {   //Costruiamo una richiesta di autenticazione
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
-        builder.setScopes(new String[]{SCOPES});
+        builder.setScopes(new String[]{SCOPES}); //Settiamo le autorizzazioni
         AuthenticationRequest request = builder.build();
-        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request); //Si apre la finestra di login
     }
 
 
@@ -80,12 +79,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
-        // Check if result comes from the correct activity
+        // Controlliamo se il risultato proviene dall'attività corretta
         if (requestCode == REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
 
             switch (response.getType()) {
-                // Response was successful and contains auth token
+                // Se la risposta da esito positivo, contiene il token di autenticazione
                 case TOKEN:
                     editor = getSharedPreferences("SPOTIFY", 0).edit();
                     editor.putString("token", response.getAccessToken());
@@ -94,14 +93,13 @@ public class SplashActivity extends AppCompatActivity {
                     waitForUserInfo();
                     break;
 
-                // Auth flow returned an error
+
                 case ERROR:
-                    // Handle error response
+
                     break;
 
-                // Most likely auth flow was cancelled
                 default:
-                    // Handle other cases
+
             }
         }
     }
