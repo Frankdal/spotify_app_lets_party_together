@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.letspartytogether.Model.Song;
 import com.example.letspartytogether.R;
@@ -48,7 +49,8 @@ public class PartyActivity extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("Code: ", tvPartyCode.getText().toString());
                 clipboard.setPrimaryClip(clip);
-
+                Toast toast = Toast.makeText(getApplicationContext(),"Code copied to clipboard!",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 
