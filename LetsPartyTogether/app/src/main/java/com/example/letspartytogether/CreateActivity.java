@@ -45,7 +45,7 @@ public class CreateActivity extends AppCompatActivity {
         bttCreate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Creazione del file json
                 String _nomeParty = etPartyName.getText().toString();
                 try {
                     jsonObject.put("name",_nomeParty);
@@ -57,7 +57,7 @@ public class CreateActivity extends AppCompatActivity {
 
                 data = jsonObject.toString();
 
-
+                //Richiesta di PUT del party al nostro server, passandogli un oggetto json contenente il nome del party, l'user id e il suo token d'accesso
 
                 OkHttpClient client = new OkHttpClient().newBuilder()
                         .build();

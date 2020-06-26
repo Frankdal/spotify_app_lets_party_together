@@ -107,19 +107,19 @@ public class ResearchActivity extends AppCompatActivity {
                                 }
                             }
 
-                                ResearchActivity.this.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
+                            ResearchActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
 
 
-                                        Intent intentToAddSongActivity = new Intent("android.intent.action.AddSongActivity");
-                                        intentToAddSongActivity.putExtra("jsonSongs",jsonSongs );
-                                        intentToAddSongActivity.putExtra(getString(R.string.STRINGA_CreateCodice), code);
-                                        startActivity(intentToAddSongActivity);
-                                    }
-                                });
-                            }
+                                    Intent intentToAddSongActivity = new Intent("android.intent.action.AddSongActivity");
+                                    intentToAddSongActivity.putExtra("jsonSongs",jsonSongs );
+                                    intentToAddSongActivity.putExtra(getString(R.string.STRINGA_CreateCodice), code);
+                                    startActivity(intentToAddSongActivity);
+                                }
+                            });
                         }
+                    }
                 });
             }
         });
