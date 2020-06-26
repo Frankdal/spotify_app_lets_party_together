@@ -116,16 +116,6 @@ async function createPlaylist(party) {
 
 function addTrackToPlaylist(playlistId, token, trackUri) {
 	return new Promise(async (resolve, reject) => {
-
-        // let tracks = await getPlaylistItems(playlistId, token); 
-        // if (tracks.status) resolve({status: tracks.status, statusMessage: "Couldn't get playlist items: " + tracks.statusMessage}); 
-        // console.log(tracks); 
-
-
-
-		// console.log("---Adding a track to a playlist---");
-		// console.log("playlist id:" + playlistId);
-
 		const options = {
 			method: "POST",
 			headers: {
@@ -169,9 +159,6 @@ function getPromiseSearchTrack(key, token) {
 		// console.log("url search: " + url);
 		let tracks;
 		https.get(url, options, (res) => {
-			// console.log(
-			// 	"\tsearch request: " + res.statusCode + " " + res.statusMessage
-			// );
 			let result = "";
 			res.on("data", (chunk) => {
 				result += chunk;
@@ -195,14 +182,6 @@ async function searchTrack(key, token) {
 	try {
 		let https_promise = getPromiseSearchTrack(key, token);
 		let response_body = await https_promise;
-
-		// holds response from server that is passed when Promise is resolved
-		// console.log(
-		// 	"first song found: " +
-		// 		response_body[0].name +
-		// 		" -- uri: " +
-		// 		response_body[0].uri
-		// );
 		result = response_body;
 		return result;
 	} catch (error) {
@@ -222,13 +201,6 @@ function getPromisePlaylistItems(playlistId, token) {
 		let url = "https://api.spotify.com/v1/playlists/" + playlistId + "/tracks";
 
 		https.get(url, options, (res) => {
-			// console.log(
-			// 	"\tget playlist items status:" +
-			// 		res.statusCode +
-			// 		" " +
-			// 		res.statusMessage
-			// );
-
 			let result = "";
 			res.on("data", (chunk) => {
 				result += chunk;
@@ -255,20 +227,17 @@ async function getPlaylistItems(playlistId, token) {
 }
 
 async function getFeaturesOfTracks(tracksIds, token) {
-    return new Promise ((resolve, reject) => {
-        const options = {
+	return new Promise((resolve, reject) => {
+		const options = {
 			headers: {
 				Authorization: getAuthTokenHeaderValue(token),
 			},
 		};
 		let url =
-            "https://api.spotify.com/v1/audio-features/?ids=" + tracksIds.join();
+			"https://api.spotify.com/v1/audio-features/?ids=" + tracksIds.join();
 		// console.log("url search: " + url);
 		let features;
 		https.get(url, options, (res) => {
-			// console.log(
-			// 	"\tsearch request: " + res.statusCode + " " + res.statusMessage
-			// );
 			let result = "";
 			res.on("data", (chunk) => {
 				result += chunk;
@@ -281,23 +250,23 @@ async function getFeaturesOfTracks(tracksIds, token) {
 				resolve(features);
 			});
 		});
-    })
+	});
 }
 
 async function replacePlaylistSongs(playlistId, tracksUri, token) {
 	return new Promise((resolve, reject) => {
 		const options = {
-			method: "PUT", 
+			method: "PUT",
 			headers: {
 				Authorization: getAuthTokenHeaderValue(token),
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
 			},
 		};
 		let url =
 			"https://api.spotify.com/v1/playlists/" +
 			playlistId +
 			"/tracks?uris=" +
-			tracksUri.join(); 
+			tracksUri.join();
 
 		let req = https.request(url, options, (res) => {
 			let result = "";
@@ -310,8 +279,8 @@ async function replacePlaylistSongs(playlistId, tracksUri, token) {
 			});
 		});
 
-		req.end(); 
-	})
+		req.end();
+	});
 }
 
 module.exports = {
@@ -319,7 +288,7 @@ module.exports = {
 	createPlaylist,
 	searchTrack,
 	addTrackToPlaylist,
-    getPlaylistItems,
+	getPlaylistItems,
 	getFeaturesOfTracks,
-	replacePlaylistSongs
+	replacePlaylistSongs,
 };
