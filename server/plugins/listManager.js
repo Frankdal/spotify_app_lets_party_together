@@ -17,7 +17,7 @@ function rearrangePlaylist(playlistId, token, data) {
 				status: features.status,
 				message: "Couldn't get the features: " + features.statusMessage,
 			});
-		console.log(features);
+		// console.log(features);
 		data = [];
 		features.audio_features.forEach((f) => {
 			let newData = [];

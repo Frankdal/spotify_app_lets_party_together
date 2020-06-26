@@ -1,4 +1,5 @@
-let counter = 0;
+const startCounter = 6453;
+let counter = startCounter;
 
 class Party {
 	constructor(name, creatorUserId, token) {
@@ -15,4 +16,5 @@ class Party {
 
 module.exports = {
 	Party,
+	startCounter,
 };

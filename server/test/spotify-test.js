@@ -4,11 +4,12 @@ const chaiHttp = require("chai-http");
 const should = chai.should();
 const assert = chai.assert;
 const removeDuplicates = require("../plugins/listManager").removeDuplicates;
+const party = require("../db/party");
 
 chai.use(chaiHttp);
 
 let token =
-	"BQBFY1ajntskFAlzN3wz4I6Knxza4yaq_2MbnrEwz3BSIGHFchnU4nYNQqnx7iAi77xo-4aM1PLpjJtUPbnrSaYo1m04wIVk2EjIsrEVYlOmFHa_y45sBTZuzY4kwxKeCYc6fOXAgmsHI60tx6QBeHrPmnUB9aK1E63vlW6Jc5zv7ErlulbhNgkKXuJwnGUVaRnTfx4";
+	"BQAq3un_pbRIu9m0wp6YsF_qgfBeysiVeqSMtcma0byxciB26Xxr7aXrZPeNSuGJw96Hmstrs8-KEPU9PoUhD2wkNilgLmQJcKo-SAKd36RTzqIeuei-dHx4_JD5CQARtZP7EtlhKdEbzv5_QXjCsXKTmt5UOfkywSX2YYKaXwf-W_UJjKDpBYtVeI8BmgsHUZjvhaQ";
 
 describe("/GET status", () => {
 	it("it should create a new party", async () => {
@@ -38,7 +39,7 @@ describe("/GET party", () => {
 		const res = await chai
 			.request(server)
 			.get("/party")
-			.query({ ids: [0] });
+			.query({ ids: [party.startCounter] });
 		if (res.status != 200) console.log(res.text);
 		res.should.have.status(200);
 	});
@@ -60,7 +61,7 @@ describe("/GET track", () => {
 		const res = await chai
 			.request(server)
 			.get("/search")
-			.query({ key: "Can't Hold Us", partyId: 0 });
+			.query({ key: "Can't Hold Us", partyId: party.startCounter });
 		if (res.status != 200) console.log(res.text);
 		res.should.have.status(200);
 		assert.equal(res.body[0].name, "Can't Hold Us (feat. Ray Dalton)");
@@ -71,7 +72,7 @@ describe("/GET track", () => {
 describe("/POST playlist", () => {
 	it("it should add a song to the playlist", async () => {
 		let toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:31qgVdvSqTQ7unwQQngycB", //Can't Hold Us
 		};
 		const res = await chai.request(server).post("/playlist").send(toSend);
@@ -86,7 +87,7 @@ describe("/GET playlist", () => {
 		const res = await chai
 			.request(server)
 			.get("/playlist")
-			.query({ partyId: 0 });
+			.query({ partyId: party.startCounter });
 
 		if (res.status != 200) console.log(res.text);
 		res.should.have.status(200);
@@ -97,49 +98,49 @@ describe("/GET playlist", () => {
 describe("/PUT playlist", () => {
 	it("it should add a group of songs to the playlist and rearrange the playlist", async () => {
 		let toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:05RgAMGypEvqhNs5hPCbMS", //Panama
 		};
 		let res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:1bVlFkO4UyfNYWurqCghT7", //Follaton Wood
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:4YMqbFcDIFiCBd02PzUBcM", //Thrift Shop
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:5AeoHJUx0PJXAzN425xryh", //Dandelion Wine
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:33ZjZqqFuGRTPjNVqO0h8o", //Nothing Else
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:4p1y6JyyuirS0y6YE4ppyS", //Tom Cat Blues
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:0b36Qy1tiyJGv3rPaQTplR", //Sold It To The Devil
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
 
 		toSend = {
-			partyId: "0",
+			partyId: party.startCounter,
 			trackUri: "spotify:track:4N0TP4Rmj6QQezWV88ARNJ", //Superstition
 		};
 		res = await chai.request(server).post("/playlist").send(toSend);
